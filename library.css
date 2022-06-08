@@ -9,8 +9,9 @@ body {
     padding: 100px;
 }
 
-table, tr, th {
+table, tr, th, td {
     border: 1px solid black;
+    text-align: center;
 }
 
 table {
