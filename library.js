@@ -14,9 +14,7 @@ function addBookToLibrary(book) {
     myLibrary.push(book)
 }
 
-function displayBook() {
-    myLibrary.forEach(book => {
-
+function displayBook(book) {
         const tableRow = document.createElement("tr");
         const tableHeaderTitle = document.createElement("td");
         const tableHeaderAuthor = document.createElement("td");
@@ -35,5 +33,36 @@ function displayBook() {
         tableRow.appendChild(tableHeaderAuthor)
         tableRow.appendChild(tableHeaderPages)
         tableRow.appendChild(tableHeaderRead)
-    });
+  
 }
+
+const newBookButton = document.querySelector(".newbtn")
+const popUp = document.querySelector(".darkbg")
+
+function showPopUp() {
+    popUp.classList.remove("hide")
+}
+
+newBookButton.addEventListener("click", showPopUp)
+
+const addBookButton = document.querySelector(".submit")
+const title = document.querySelector("#title")
+const author = document.querySelector("#author")
+const pages = document.querySelector("#pages")
+const read = document.querySelector("#read")
+
+addBookButton.addEventListener("click", function() {
+
+    let haveRead
+    if (read.checked) {
+        haveRead = "Yes"
+    }
+    else haveRead = "No"
+
+    let newBook = new Book(title.value, author.value, pages.value, haveRead)
+    
+    addBookToLibrary(newBook)
+    displayBook(newBook)
+
+    popUp.classList.add("hide")
+})

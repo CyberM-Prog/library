@@ -6,7 +6,7 @@
 
 body {
     width: 100vw;
-    padding: 100px;
+    height: 100vh;
 }
 
 table, tr, th, td {
@@ -16,4 +16,87 @@ table, tr, th, td {
 
 table {
     width: 100%;
+}
+
+.tablecontainer {
+    margin: 50px;
+}
+
+.buttoncontainer {
+    display: flex;
+    justify-content: center;
+    padding:50px;
+    padding-bottom: 0;
+}
+
+.newbtn {
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.darkbg {
+    background-color: aqua;
+    position: fixed;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    left: 0;
+    right: 0;
+    display: flex;
+}
+
+.hide {
+    display: none;
+}
+
+.form {
+    background-color: #fefefe;
+    margin: auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%; /* Could be more or less, depending on screen size */
+    border-radius: 10px;
+    height: 40vh;
+}
+
+form {
+    display: grid;
+    grid-template-rows: min-content 1fr min-content 1fr min-content 1fr 0.5fr min-content;
+    height: 100%;
+}
+
+#read {
+    width: 1rem;
+    height: 1rem;
+}
+
+input[type="text"] {
+    height: 2rem;
+    border-radius: 10px;
+    outline: transparent;
+    border-style: solid;
+    margin-top: 5px;
+}
+
+label {
+    font-size: 1.25rem;
+}
+
+.submit {
+    height: fit-content;
+    align-self: center;
+    width: fit-content;
+    justify-self: center;
+    padding: 20px;
+}
+
+label[for="read"] {
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: start;
+    align-items: center;
+    gap: 5px;
 }
