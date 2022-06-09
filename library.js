@@ -51,8 +51,7 @@ const author = document.querySelector("#author")
 const pages = document.querySelector("#pages")
 const read = document.querySelector("#read")
 
-addBookButton.addEventListener("click", function() {
-
+function addBookToDisplay() {
     let haveRead
     if (read.checked) {
         haveRead = "Yes"
@@ -65,4 +64,11 @@ addBookButton.addEventListener("click", function() {
     displayBook(newBook)
 
     popUp.classList.add("hide")
-})
+
+    title.value = ""
+    author.value = ""
+    pages.value = ""
+    read.checked = false
+}
+
+addBookButton.addEventListener("click", addBookToDisplay)
