@@ -20,6 +20,8 @@ table {
 
 .tablecontainer {
     margin: 50px;
+    margin-left: 100px;
+    margin-right: 100px;
 }
 
 .buttoncontainer {
@@ -99,4 +101,8 @@ label[for="read"] {
     justify-content: start;
     align-items: center;
     gap: 5px;
+}
+
+col {
+    width: calc(100% / 6);
 }
