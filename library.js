@@ -16,12 +16,10 @@ Book.prototype.toggleRead = function() {
     if (this.textContent === "Yes") {
         this.textContent = "No"
         myLibrary[indexNumber].read = "No"
-        console.log(myLibrary[indexNumber])
     }
     else {
         this.textContent = "Yes"
         myLibrary[indexNumber].read = "Yes"
-        console.log(myLibrary[indexNumber])
     }
 }
 
@@ -77,7 +75,6 @@ let displayBookCounter = (function(book) {
         haveRead.textContent = book.read
 
         haveRead.addEventListener("click", book.toggleRead)
-        console.log(book.read)
 
         removeButton.addEventListener("click", function() {
             
