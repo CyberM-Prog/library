@@ -10,11 +10,26 @@ function Book(title, author, pages, read) {
     }
 }
 
+Book.prototype.toggleRead = function() {
+    let indexNumber = this.getAttribute("data-book")
+    
+    if (this.textContent === "Yes") {
+        this.textContent = "No"
+        myLibrary[indexNumber].read = "No"
+        console.log(myLibrary[indexNumber])
+    }
+    else {
+        this.textContent = "Yes"
+        myLibrary[indexNumber].read = "Yes"
+        console.log(myLibrary[indexNumber])
+    }
+}
+
 function addBookToLibrary(book) {
     myLibrary.push(book)
 }
 
-let displayBookCounter = (function() {
+let displayBookCounter = (function(book) {
     
     let n
 
@@ -29,6 +44,7 @@ let displayBookCounter = (function() {
         const tableHeaderPages = document.createElement("td");
         const tableHeaderRead = document.createElement("td");
         const tableRemove = document.createElement("td");
+        const haveRead = document.createElement("button")
 
         removeButton.setAttribute("data-book", n)
         removeButton.setAttribute("class", "remove")
@@ -38,12 +54,12 @@ let displayBookCounter = (function() {
         tableHeaderPages.setAttribute("data-book", n)
         tableHeaderRead.setAttribute("data-book", n)
         tableRemove.setAttribute("data-book", n)
+        haveRead.setAttribute("data-book", n)
         n++
 
         tableHeaderTitle.textContent = book.title
         tableHeaderAuthor.textContent = book.author
         tableHeaderPages.textContent = book.pages
-        tableHeaderRead.textContent = book.read
         removeButton.textContent = "Remove"
 
         const table = document.querySelector("table")
@@ -57,9 +73,14 @@ let displayBookCounter = (function() {
 
         tableRemove.appendChild(removeButton)
 
-        removeButton.addEventListener("click", function() {
+        tableHeaderRead.appendChild(haveRead)
+        haveRead.textContent = book.read
 
-        
+        haveRead.addEventListener("click", book.toggleRead)
+        console.log(book.read)
+
+        removeButton.addEventListener("click", function() {
+            
             let dataIndex = removeButton.getAttribute("data-book")
             delete myLibrary[dataIndex]
             tableRow.parentElement.removeChild(tableRow)        
@@ -84,10 +105,13 @@ const read = document.querySelector("#read")
 
 function addBookToDisplay() {
     let haveRead
+
     if (read.checked) {
         haveRead = "Yes"
     }
-    else haveRead = "No"
+    else {
+        haveRead = "No"
+    }
 
     let newBook = new Book(title.value, author.value, pages.value, haveRead)
     
