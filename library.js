@@ -1,25 +1,27 @@
 let myLibrary = [];
 
-function Book(title, author, pages, read) {
-    this.title = title
-    this.author = author 
-    this.pages = pages
-    this.read = read
-    this.info = function() {
-        return (title + " by " + author + ", " + pages + " pages" +", " + read)
+class Book {
+    constructor(title, author, pages, read) {
+        this.title = title
+        this.author = author 
+        this.pages = pages
+        this.read = read
+        this.info = function() {
+            return (title + " by " + author + ", " + pages + " pages" +", " + read)
+        }
     }
-}
 
-Book.prototype.toggleRead = function() {
-    let indexNumber = this.getAttribute("data-book")
-    
-    if (this.textContent === "Yes") {
-        this.textContent = "No"
-        myLibrary[indexNumber].read = "No"
-    }
-    else {
-        this.textContent = "Yes"
-        myLibrary[indexNumber].read = "Yes"
+    toggleRead() {
+        let indexNumber = this.getAttribute("data-book")
+        
+        if (this.textContent === "Yes") {
+            this.textContent = "No"
+            myLibrary[indexNumber].read = "No"
+        }
+        else {
+            this.textContent = "Yes"
+            myLibrary[indexNumber].read = "Yes"
+        }
     }
 }
 
