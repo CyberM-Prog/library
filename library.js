@@ -102,6 +102,7 @@ const author = document.querySelector("#author")
 const pages = document.querySelector("#pages")
 const read = document.querySelector("#read")
 
+
 function addBookToDisplay() {
     let haveRead
 
@@ -110,6 +111,24 @@ function addBookToDisplay() {
     }
     else {
         haveRead = "No"
+    }
+
+    if (title.validity.valueMissing) {
+        title.setCustomValidity("You need to put a title!");
+        title.reportValidity();
+        return
+    }
+
+    if (author.validity.valueMissing) {
+        author.setCustomValidity("You need to put an author!");
+        author.reportValidity();
+        return
+    }
+
+    if (pages.validity.valueMissing) {
+        pages.setCustomValidity("You need to put the number of pages!");
+        pages.reportValidity();
+        return
     }
 
     let newBook = new Book(title.value, author.value, pages.value, haveRead)
